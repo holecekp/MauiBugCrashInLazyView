@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Maui.Controls.Compatibility.Hosting;
 
 namespace MauiBugCrashInLazyView;
 
@@ -13,11 +13,8 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+			})
+            .UseMauiCompatibility();
 
 		return builder.Build();
 	}
