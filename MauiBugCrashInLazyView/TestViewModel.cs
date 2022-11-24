@@ -1,41 +1,40 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 
-namespace MorseCode.ViewModels
+namespace MauiBugCrashInLazyView;
+
+public class TestViewModel : INotifyPropertyChanged
 {
-    public class TestViewModel : INotifyPropertyChanged
+    public ICommand LoadViewCommand { get; protected set; }
+    public TestViewModel()
     {
-        public ICommand LoadViewCommand { get; protected set; }
-        public TestViewModel()
+        LoadViewCommand = new Command(LoadView);
+    }
+
+    private bool showView = false;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public bool ShowView
+    {
+        get => showView;
+        set
         {
-            LoadViewCommand = new Command(LoadView);
-        }
-
-        private bool showView = false;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public bool ShowView
-        {
-            get => showView;
-            set
+            if (showView != value)
             {
-                if (showView != value)
-                {
-                    showView = value;
-                    OnPropertyChanged(nameof(ShowView));
-                }
+                showView = value;
+                OnPropertyChanged(nameof(ShowView));
             }
         }
+    }
 
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
-        private void LoadView()
-        {
-            ShowView = true;
-        }
+    private void LoadView()
+    {
+        ShowView = true;
     }
 }

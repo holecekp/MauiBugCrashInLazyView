@@ -1,12 +1,10 @@
-﻿using MorseCode.ViewModels;
-
-namespace MauiBugCrashInLazyView;
+﻿namespace MauiBugCrashInLazyView;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage()
-	{
-		InitializeComponent();
+    public MainPage()
+    {
+        InitializeComponent();
         BindingContext = new TestViewModel();
     }
 }

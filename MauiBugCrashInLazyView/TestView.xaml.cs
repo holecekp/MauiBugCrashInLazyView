@@ -1,9 +1,9 @@
-namespace MauiBugCrashInLazyView;
+﻿namespace MauiBugCrashInLazyView;
 
 public partial class TestView : ContentView
 {
-	public TestView()
-	{
-		InitializeComponent();
-	}
+    public TestView()
+    {
+        InitializeComponent();
+    }
 }
