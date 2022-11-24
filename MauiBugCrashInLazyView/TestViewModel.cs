@@ -13,8 +13,6 @@ public class TestViewModel : INotifyPropertyChanged
 
     private bool showView = false;
 
-    public event PropertyChangedEventHandler PropertyChanged;
-
     public bool ShowView
     {
         get => showView;
@@ -28,13 +26,15 @@ public class TestViewModel : INotifyPropertyChanged
         }
     }
 
-    protected void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
     private void LoadView()
     {
         ShowView = true;
+    }
+
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
